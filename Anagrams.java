@@ -1,38 +1,31 @@
 import java.util.Scanner;
 
-public class Anagrams {
+public class Solution {
 
     static boolean isAnagram(String a, String b) 
     {
-        int flag=0;
-        if(a.length()==b.length())
-        {
-            String m = a.toLowerCase();
-            String n = b.toLowerCase();
-            StringBuffer sb2 = new StringBuffer(n);
-            for(int i=0;i<a.length();i++)
-            {
-                char ch = m.charAt(i);
-                int index = n.indexOf(ch);
-                if(index>=0)
-                {
-                    sb2.deleteCharAt(index);
-                    StringBuffer temp = sb2;
-                    n=temp.toString();
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            if(n.length()==0)
-            {
-                return true;
-            }
-            return false;
-        }
-        return false;
-  }
+      String s1 = a.toLowerCase();
+      String s2 = b.toLowerCase();
+      if(s1.length() == s2.length())
+      {
+          int v=0;
+          for(int i=0;i<s1.length();i++)
+          {
+              v=v^s1.charAt(i);
+              v=v^s2.charAt(i);
+          }
+          if(v==0)
+          {
+              return true;
+          }
+          else
+          {
+              return false;
+          }
+      }
+      return false;
+    }
+
   public static void main(String[] args) {
     
         Scanner scan = new Scanner(System.in);
